@@ -11,6 +11,7 @@ public class Main {
         ArrayList<String> titlelist = new ArrayList<>();
         ArrayList<String> detaillist = new ArrayList<>();
         int update_num = 0;
+        int delete_num = 0;
 
 //        String title = ""; //반복문에 변수를 저장해도 초기값으로 루프 하기때문에 밖에 저장한다.
 //        String detail = ""; // 딱히 값을 지정할 필요가 없음.
@@ -51,27 +52,65 @@ public class Main {
 
                 System.out.print("수정할 게시물 번호 : ");
                 update_num = scan.nextInt();
-                System.out.printf("수정할 게시물 번호 : %d\n", update_num);
+                scan.nextLine();
 
-                if(update_num > titlelist.size()) {
+                // 입력번호를 인덱스로 변환 => gpt 사용
+                update_num = update_num -1;
+
+                if(update_num > titlelist.size() || update_num < 0) {
                     System.out.println("없는 게시물 번호 입니다.");
                     System.out.println("==================");
 
                 } else {
-                    System.out.printf("수정할 게시물 번호 : %d\n", update_num);
+                    System.out.printf("수정할 게시물 번호 : %d\n", update_num + 1);
 
-                    titlelist.remove(update_num);
-                    detaillist.remove(update_num);
-
+//                    기존에 내가 짠 코드
 //                    System.out.print("제목 : ");
 //                    String update_title = scan.nextLine();
 //                    titlelist.add(titlelist.get(update_num));
-//
+
 //                    System.out.print("내용 : ");
 //                    String update_detail = scan.nextLine();
 //                    detaillist.add(titlelist.get(update_num));
 
-                    System.out.printf("%d번 게시물이 수정되었습니다.", update_num);
+                    System.out.print("제목 : ");
+                    String update_title = scan.nextLine();
+                    titlelist.set(update_num, update_title);
+
+                    System.out.print("내용 : ");
+                    String update_detail = scan.nextLine();
+                    detaillist.set(update_num, update_detail);
+
+                    System.out.printf("%d번 게시물이 수정되었습니다.\n", update_num + 1);
+                    System.out.println("==================");
+                }
+            } else if(cmd.equals("delete")) {
+
+                System.out.print("삭제할 게시물 번호 : ");
+                delete_num = scan.nextInt();
+                scan.nextLine();
+
+                // 입력번호를 인덱스로 변환 => gpt 사용
+                delete_num = delete_num -1;
+
+                if(delete_num >= titlelist.size() || delete_num < 0) {
+                    System.out.println("없는 게시물 번호 입니다.");
+                    System.out.println("==================");
+
+                } else {
+                    System.out.printf("삭제할 게시물 번호 : %d\n", delete_num + 1);
+
+//                    내가 짠 코드
+//                    String delete_title = scan.nextLine();
+//                    titlelist.remove(delete_title);
+//
+//                    String delete_detail = scan.nextLine();
+//                    detaillist.remove(delete_detail);
+
+                    titlelist.remove(delete_num);
+                    detaillist.remove(delete_num);
+
+                    System.out.printf("%d번 게시물이 삭제되었습니다.\n", delete_num + 1);
                     System.out.println("==================");
                 }
             }
