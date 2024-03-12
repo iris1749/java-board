@@ -1,5 +1,7 @@
 package org.example;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,15 +12,6 @@ public class Main {
     }
 }
 
-
-
-
-
-
-
-
-
-
         // 1. 반복물 제어 하던 방법 : 반복 횟수를 세서 특정 횟수를 지나면 탈출
         // 2. break문을 사용하여 강제 탈출 가능.
 
@@ -28,9 +21,3 @@ public class Main {
 //            }
 //            System.out.println(i);
 //        }
-
-
-
-
-    }
-}
