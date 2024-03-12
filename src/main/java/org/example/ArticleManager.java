@@ -27,7 +27,7 @@ public class ArticleManager {
         titleList.add(title);
         detailList.add(detail);
         timestampList.add(LocalDateTime.now());
-        viewCounts.add(0);
+        viewCounts.add(1);
     }
 
     public void listArticles() {
@@ -81,15 +81,18 @@ public class ArticleManager {
             System.out.printf("내용: %s\n", detailList.get(index));
             System.out.printf("등록 날짜: %s\n", timestampList.get(index).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
             System.out.printf("조회수: %d\n", viewCounts.get(index));
+
+            // 조회수 증가
+            int count = viewCounts.get(index) + 1;
+            viewCounts.set(index, count);
+
             System.out.println("==================");
         } else {
             System.out.println("없는 게시물 번호 입니다.");
         }
     }
 
-     public void searchArticle(Scanner scan) {
-
-         String keyword = scan.nextLine();
+     public void searchArticle(String keyword) {
 
          boolean search = false;
 
