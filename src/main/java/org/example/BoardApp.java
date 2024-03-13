@@ -70,21 +70,11 @@ public class BoardApp {
                 } else {
                     System.out.println("없는 게시물 번호 입니다.");
                 }
-
-
-            } else if(cmd.equals("detail")) {
-
-                System.out.print("상세보기 할 게시물 번호를 입력해주세요. : ");
-                int index = scan.nextInt();
-                scan.nextLine();
-
-                articleManager.viewArticleDetail(index - 1);
-
             } else if (cmd.equals("search")) {
 
                 System.out.print("검색할 키워드를 입력해주세요 : ");
                 String keyword = scan.nextLine();
-                scan.nextLine();
+                articleManager.searchArticle(keyword);
 
             }
 
