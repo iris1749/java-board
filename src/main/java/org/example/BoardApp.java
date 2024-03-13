@@ -1,8 +1,5 @@
 package org.example;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BoardApp {
@@ -13,7 +10,7 @@ public class BoardApp {
 
         while(true) { // 반복 조건이 true일대 무한 반복함.
 
-            System.out.printf("명령어 : ");
+            System.out.print("명령어 : ");
             String cmd = scan.nextLine();
 
             if(cmd.equals("exit")) {
@@ -37,9 +34,23 @@ public class BoardApp {
             } else if (cmd.equals("detail")) {
                 System.out.print("상세보기 할 게시물 번호를 입력하세요: ");
                 int index = scan.nextInt();
-
                 scan.nextLine(); // 개행문자 제거
+
                 articleManager.detailArticle(index - 1);
+
+                while(true) {
+
+                    System.out.print("상세보기 기능을 선택해주세요(1. 댓글 등록, 2. 추천, 3. 수정, 4. 삭제, 5. 목록으로) : ");
+                    int detailmenu_num = scan.nextInt();
+                    scan.nextLine(); // 개행문자 제거
+                    articleManager.detailMenu(detailmenu_num);
+
+                    if (detailmenu_num == 5) {
+                        break;
+                    }
+
+                }
+
 
             } else if(cmd.equals("update")) { // 게시물 번호 입력하여 제목 및 내용 수정 진행하는 코드
 
